@@ -35,3 +35,9 @@ npm run test:unit
 ```sh
 npm run lint
 ```
+
+## Configuracion de API con json-server
+
+```sh
+npx run json-server
+```
