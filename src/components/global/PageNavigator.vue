@@ -22,25 +22,25 @@ defineProps({
 </script>
 
 <template>
-  <div class="flex justify-end items-center bg-gray-200 px-3 py-1">
+  <div class="flex items-center justify-end gap-3 border-t border-gray-100 bg-gray-50 px-4 py-3">
+    <span class="text-sm text-gray-600">{{ page }} de {{ totalPages }}</span>
     <div class="flex items-center gap-2">
-      <button
-        class="px-4 py-2 bg-gray-800 rounded-md text-white text-sm"
-        :class="{ 'opacity-50 cursor-not-allowed': page === 1 }"
+      <BaseButton
+        variant="secondary"
         :disabled="page === 1"
+        class="disabled:cursor-not-allowed disabled:opacity-50"
         @click="onPrevious"
       >
         Anterior
-      </button>
-      <span class="text-gray-900"> {{ page }} de {{ totalPages }}</span>
-      <button
-        class="px-4 py-2 bg-gray-800 rounded-md text-white text-sm"
-        :class="{ 'opacity-50 cursor-not-allowed': page === totalPages }"
+      </BaseButton>
+      <BaseButton
+        variant="primary"
         :disabled="page === totalPages"
+        class="disabled:cursor-not-allowed disabled:opacity-50"
         @click="onNext"
       >
         Siguiente
-      </button>
+      </BaseButton>
     </div>
   </div>
 </template>

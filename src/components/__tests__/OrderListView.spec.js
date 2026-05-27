@@ -9,6 +9,9 @@ import db from '../../../db.json'
 import BaseLoader from '@/components/global/BaseLoader.vue'
 import BaseSelect from '@/components/global/BaseSelect.vue'
 import BaseInput from '@/components/global/BaseInput.vue'
+import BaseAlert from '@/components/global/BaseAlert.vue'
+import PageNavigator from '@/components/global/PageNavigator.vue'
+import BaseButton from '@/components/global/BaseButton.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
@@ -24,6 +27,9 @@ const components = {
   BaseLoader,
   BaseSelect,
   BaseInput,
+  BaseAlert,
+  BaseButton,
+  PageNavigator,
 }
 
 describe('OrderListView Component', () => {

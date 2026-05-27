@@ -12,6 +12,7 @@ import BaseSelect from '@/components/global/BaseSelect.vue'
 import BaseInput from '@/components/global/BaseInput.vue'
 import BaseButton from '@/components/global/BaseButton.vue'
 import BaseModal from '@/components/global/BaseModal.vue'
+import BaseAlert from '@/components/global/BaseAlert.vue'
 
 vi.mock('@/composables/useOrder')
 
@@ -38,6 +39,7 @@ const components = {
   BaseInput,
   BaseButton,
   BaseModal,
+  BaseAlert,
 }
 
 const router = createRouter({

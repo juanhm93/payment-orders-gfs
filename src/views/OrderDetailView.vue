@@ -61,50 +61,42 @@ onMounted(async () => {
 </script>
 
 <template>
-  <div>
-    <div class="flex justify-center p-2">
+  <div class="w-full">
+    <div class="mx-auto flex w-full max-w-lg flex-col items-center gap-3 p-2">
       <div
         v-if="loadingPage"
         data-testid="order-detail-loading"
-        class="flex flex-col items-center gap-2 justify-center"
+        class="flex flex-col items-center gap-2 justify-center text-gray-600"
       >
         <BaseLoader size="large" />
         Cargando la orden...
       </div>
 
       <Transition name="state-fade" mode="out-in">
-        <div
-          v-if="orderStore.error"
-          data-testid="order-detail-error"
-          class="bg-red-500 text-sm text-white p-4 rounded-md"
-        >
+        <BaseAlert v-if="orderStore.error" data-testid="order-detail-error" variant="error">
           Error algo salio mal al cargar la orden.
-        </div>
+        </BaseAlert>
       </Transition>
       <Transition name="state-fade" mode="out-in">
-        <div
-          v-if="showMessageError"
-          data-testid="order-detail-error-message"
-          class="bg-red-500 text-sm text-white p-4 rounded-md"
-        >
+        <BaseAlert v-if="showMessageError" variant="error" data-testid="order-detail-error-message">
           Hubo un error al cambiar el estatus de la orden.
-        </div>
+        </BaseAlert>
       </Transition>
       <Transition name="state-fade" mode="out-in">
-        <div
+        <BaseAlert
           v-if="showMessageSuccess"
+          variant="success"
           data-testid="order-detail-success-message"
-          class="bg-green-500 text-sm text-white p-4 rounded-md"
         >
           El cambio de estatus de la orden se ha realizado correctamente.
-        </div>
+        </BaseAlert>
       </Transition>
     </div>
-    <div class="flex justify-center px-4 py-6">
+
+    <div v-if="order" class="w-full flex justify-center py-6">
       <article
-        v-if="order"
         data-testid="order-detail-card"
-        class="w-full max-w-lg overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-200"
+        class="mx-auto w-full max-w-lg overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-200"
       >
         <div class="border-b border-gray-100 bg-gray-50 px-6 py-5">
           <div class="flex items-start justify-between gap-4">
@@ -155,44 +147,42 @@ onMounted(async () => {
           </BaseButton>
         </footer>
       </article>
-
-      <div>
-        <BaseModal
-          v-model:is-open="isModalOpen"
-          title="Cambiar estatus"
-          description="Selecciona el nuevo estatus para esta orden de pago."
-        >
-          <template #content>
-            <form
-              id="update-status-form"
-              data-testid="update-status-form"
-              @submit="onSubmitUpdateStatus"
-            >
-              <BaseSelect
-                v-model="status"
-                id="order-status-select"
-                label=""
-                data-testid="order-status-select"
-                :options="optionsCondition"
-                :error="statusError"
-              />
-            </form>
-          </template>
-          <template #footer>
-            <BaseButton variant="secondary" @click="closeModal"> Cancelar </BaseButton>
-            <BaseButton
-              variant="primary"
-              type="submit"
-              form="update-status-form"
-              :disabled="isLoadingUpdateStatus"
-            >
-              <BaseLoader v-if="isLoadingUpdateStatus" size="small" />
-              <span v-else>Guardar cambios</span>
-            </BaseButton>
-          </template>
-        </BaseModal>
-      </div>
     </div>
+
+    <BaseModal
+      v-model:is-open="isModalOpen"
+      title="Cambiar estatus"
+      description="Selecciona el nuevo estatus para esta orden de pago."
+    >
+      <template #content>
+        <form
+          id="update-status-form"
+          data-testid="update-status-form"
+          @submit="onSubmitUpdateStatus"
+        >
+          <BaseSelect
+            v-model="status"
+            id="order-status-select"
+            label=""
+            data-testid="order-status-select"
+            :options="optionsCondition"
+            :error="statusError"
+          />
+        </form>
+      </template>
+      <template #footer>
+        <BaseButton variant="secondary" @click="closeModal"> Cancelar </BaseButton>
+        <BaseButton
+          variant="primary"
+          type="submit"
+          form="update-status-form"
+          :disabled="isLoadingUpdateStatus"
+        >
+          <BaseLoader v-if="isLoadingUpdateStatus" size="small" />
+          <span v-else>Guardar cambios</span>
+        </BaseButton>
+      </template>
+    </BaseModal>
   </div>
 </template>
 
