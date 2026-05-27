@@ -14,6 +14,7 @@ export const useOrderStore = defineStore('order', () => {
   const totalPages = computed(() => Math.ceil(totalCount.value / itemsPerPage.value))
   const status = ref('all')
   const search = ref('')
+  const orderId = ref(undefined)
 
   async function checkParams() {
     const params = new URLSearchParams(window.location.search)
@@ -21,6 +22,7 @@ export const useOrderStore = defineStore('order', () => {
     const perPage = params.get('_per_page')
     const statusParam = params.get('status')
     const searchParam = params.get('supplierName_like')
+    const idParam = params.get('id')
     if (page) {
       currentPage.value = parseInt(page)
     }
@@ -33,6 +35,10 @@ export const useOrderStore = defineStore('order', () => {
     if (searchParam) {
       search.value = searchParam
     }
+
+    if (idParam) {
+      orderId.value = idParam
+    }
   }
 
   async function fetchOrders() {
@@ -43,6 +49,7 @@ export const useOrderStore = defineStore('order', () => {
         itemsPerPage.value,
         status.value,
         search.value,
+        orderId.value,
       )
 
       orders.value = data
@@ -66,6 +73,13 @@ export const useOrderStore = defineStore('order', () => {
       currentPage.value++
     }
     await fetchOrders()
+  }
+
+  function clearFilters() {
+    status.value = 'all'
+    search.value = ''
+    orderId.value = undefined
+    fetchOrders()
   }
 
   const debouncedFetchOrders = debounce(() => {
@@ -93,6 +107,7 @@ export const useOrderStore = defineStore('order', () => {
     search,
     checkParams,
     fetchOrders,
+    clearFilters,
     previousPage,
     nextPage,
   }

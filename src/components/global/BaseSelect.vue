@@ -22,7 +22,7 @@ defineProps({
     type: Array,
     default: () => [],
   },
-  classContainer: {
+  containerClass: {
     type: String,
     default: '',
   },
@@ -42,18 +42,25 @@ const selectClass = computed(() => {
 </script>
 
 <template>
-  <div class="flex flex-col gap-2">
+  <div class="flex flex-col gap-2" :class="containerClass">
     <label :for="labelFor">
       {{ label }}
     </label>
     <select
-      v-bind="$attrs"
       :class="selectClass"
       :value="modelValue"
-      @change="emit('update:modelValue', $event.target.value)"
+      v-bind="{
+        ...$attrs,
+        onchange: ($event) => emit('update:modelValue', $event.target.value),
+      }"
     >
       <slot name="options">
-        <option v-for="opt in options" :key="String(opt.value)" :value="opt.value">
+        <option
+          v-for="opt in options"
+          :key="String(opt.value)"
+          :value="opt.value"
+          :selected="modelValue === opt.value"
+        >
           {{ opt.text }}
         </option>
       </slot>

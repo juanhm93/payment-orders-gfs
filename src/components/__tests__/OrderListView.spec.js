@@ -4,6 +4,21 @@ import { useOrderStore } from '@/stores/order'
 import { mount } from '@vue/test-utils'
 import OrderListView from '@/views/OrderListView.vue'
 import db from '../../../db.json'
+import BaseLoader from '@/components/global/BaseLoader.vue'
+import BaseSelect from '@/components/global/BaseSelect.vue'
+import BaseInput from '@/components/global/BaseInput.vue'
+import { createRouter, createWebHistory } from 'vue-router'
+
+const router = createRouter({
+  history: createWebHistory(),
+  routes: [{ path: '/', component: OrderListView }],
+})
+
+const components = {
+  BaseLoader,
+  BaseSelect,
+  BaseInput,
+}
 
 describe('OrderListView Component', () => {
   it('should render loading state correctly when loading', () => {
@@ -14,7 +29,8 @@ describe('OrderListView Component', () => {
 
     const wrapper = mount(OrderListView, {
       global: {
-        plugins: [pinia],
+        plugins: [pinia, router],
+        components,
       },
     })
     expect(wrapper.find('#loading-orders').exists()).toBe(true)
@@ -29,7 +45,8 @@ describe('OrderListView Component', () => {
 
     const wrapper = mount(OrderListView, {
       global: {
-        plugins: [pinia],
+        plugins: [pinia, router],
+        components,
       },
     })
     expect(wrapper.find('#empty-orders').exists()).toBe(true)
@@ -44,7 +61,8 @@ describe('OrderListView Component', () => {
 
     const wrapper = mount(OrderListView, {
       global: {
-        plugins: [pinia],
+        plugins: [pinia, router],
+        components,
       },
     })
     expect(wrapper.findAll('[data-testid="order-table-row"]').length).toBe(db.orders.length)
@@ -59,7 +77,8 @@ describe('OrderListView Component', () => {
 
     const wrapper = mount(OrderListView, {
       global: {
-        plugins: [pinia],
+        plugins: [pinia, router],
+        components,
       },
     })
     expect(wrapper.find('#error-orders').exists()).toBe(true)
@@ -73,7 +92,8 @@ describe('OrderListView Component', () => {
 
     const wrapper = mount(OrderListView, {
       global: {
-        plugins: [pinia],
+        plugins: [pinia, router],
+        components,
       },
     })
     expect(wrapper.find('#status-select').exists()).toBe(true)

@@ -17,6 +17,11 @@ defineProps({
     required: false,
     default: '',
   },
+  error: {
+    type: String,
+    required: false,
+    default: '',
+  },
 })
 
 const emit = defineEmits(['update:modelValue'])
@@ -34,6 +39,7 @@ const updateValue = (event) => {
       v-bind="$attrs"
       class="w-full p-2 border border-gray-300 rounded-md bg-white text-gray-900"
     />
+    <p v-if="error" class="text-red-500 text-sm">{{ error }}</p>
   </div>
 </template>
 

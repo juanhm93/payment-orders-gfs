@@ -27,21 +27,30 @@ onMounted(async () => {
 <template>
   <section class="order-list-view flex w-full justify-center px-4 py-8">
     <div class="w-full max-w-7xl">
-      <div v-show="!orderStore.error" class="flex gap-4">
+      <div v-show="!orderStore.error" class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
         <BaseSelect
           id="status-select"
           label="Proveedor"
           v-model="orderStore.status"
-          container-class="pb-4"
+          container-class="pb-2.5"
           :options="optionsByStatus"
         />
         <BaseInput
           id="search-input"
           label="Buscar"
           v-model="orderStore.search"
-          container-class="pb-4"
           placeholder="Buscar... (Por proveedor)"
+          type="text"
+          container-class="pb-2"
         />
+        <div class="flex justify-end items-end h-full pb-2.5">
+          <a
+            class="text-gray-100 cursor-pointer border-b border-gray-100"
+            @click="orderStore.clearFilters"
+          >
+            clear filters
+          </a>
+        </div>
       </div>
 
       <Transition name="state-fade" mode="out-in">
@@ -56,7 +65,7 @@ onMounted(async () => {
 
         <div v-else-if="orderStore.isLoading" id="loading-orders" key="loading">
           <div class="flex flex-col justify-center items-center gap-4">
-            <BaseLoader />
+            <BaseLoader size="large" />
             <p class="text-gray-100">Cargando órdenes de pago...</p>
           </div>
         </div>

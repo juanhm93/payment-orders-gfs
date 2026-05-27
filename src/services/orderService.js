@@ -1,6 +1,12 @@
 import client from './client'
 
-export const getOrders = async (page = 1, perPage = 10, status = 'all', search = '') => {
+export const getOrders = async (
+  page = 1,
+  perPage = 10,
+  status = 'all',
+  search = '',
+  id = undefined,
+) => {
   const params = {
     _page: page,
     _per_page: perPage,
@@ -10,6 +16,10 @@ export const getOrders = async (page = 1, perPage = 10, status = 'all', search =
   }
   if (search) {
     params['supplierName_like'] = search
+  }
+
+  if (id) {
+    params.id = id
   }
 
   const stringParams = new URLSearchParams(params).toString()
@@ -29,5 +39,5 @@ export const getOrderById = async (id) => {
 
 export const createOrder = async (order) => {
   const response = await client.post('/orders', order)
-  return response.data
+  return response
 }
