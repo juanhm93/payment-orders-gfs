@@ -17,6 +17,9 @@ const title = computed(() => {
   if (route.name === 'create-order') {
     return 'Crear orden de pago'
   }
+  if (route.name === 'order-detail') {
+    return 'Detalle de orden de pago'
+  }
   return 'Dashboard'
 })
 </script>

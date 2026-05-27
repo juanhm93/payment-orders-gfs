@@ -18,9 +18,9 @@ defineProps({
     type: Array,
     default: () => [],
   },
-  errors: {
-    type: Array,
-    default: () => [],
+  error: {
+    type: String,
+    default: '',
   },
   containerClass: {
     type: String,
@@ -65,7 +65,7 @@ const selectClass = computed(() => {
         </option>
       </slot>
     </select>
-    <p v-for="error in errors" :key="`${label}-${error}`" class="mt-2 text-xs text-red-600">
+    <p v-if="error" data-testid="select-error" class="mt-2 text-xs text-red-600">
       {{ error }}
     </p>
   </div>

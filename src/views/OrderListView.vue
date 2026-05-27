@@ -33,6 +33,7 @@ onMounted(async () => {
           label="Proveedor"
           v-model="orderStore.status"
           container-class="pb-2.5"
+          data-testid="status-select"
           :options="optionsByStatus"
         />
         <BaseInput
@@ -41,6 +42,7 @@ onMounted(async () => {
           v-model="orderStore.search"
           placeholder="Buscar... (Por proveedor)"
           type="text"
+          data-testid="search-input"
           container-class="pb-2"
         />
         <div class="flex justify-end items-end h-full pb-2.5">

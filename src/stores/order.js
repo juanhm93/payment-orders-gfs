@@ -1,10 +1,11 @@
 import { ref, computed, watch } from 'vue'
 import { defineStore } from 'pinia'
-import { getOrders } from '@/services/orderService'
+import { getOrders, getOrderById, updateOrder } from '@/services/orderService'
 import { debounce } from '@/utils/debounce'
 
 export const useOrderStore = defineStore('order', () => {
   const orders = ref([])
+  const orderData = ref(null)
   const isLoading = ref(false)
   const error = ref(null)
   const ordersEmpty = computed(() => orders.value.length === 0)
@@ -82,6 +83,25 @@ export const useOrderStore = defineStore('order', () => {
     fetchOrders()
   }
 
+  async function fetchOrderById(id) {
+    const idInt = parseInt(id)
+    isLoading.value = true
+    try {
+      const findOrder = orders.value.find((o) => o.id === idInt)
+      if (findOrder) {
+        orderData.value = findOrder
+        return
+      }
+      const res = await getOrderById(id)
+      orderData.value = res
+    } catch (e) {
+      console.error(e)
+      error.value = e
+    } finally {
+      isLoading.value = false
+    }
+  }
+
   const debouncedFetchOrders = debounce(() => {
     fetchOrders()
   }, 500)
@@ -105,9 +125,11 @@ export const useOrderStore = defineStore('order', () => {
     itemsPerPage,
     status,
     search,
+    orderData,
     checkParams,
     fetchOrders,
     clearFilters,
+    fetchOrderById,
     previousPage,
     nextPage,
   }

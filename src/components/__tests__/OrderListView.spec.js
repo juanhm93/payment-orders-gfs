@@ -3,6 +3,8 @@ import { createPinia, setActivePinia } from 'pinia'
 import { useOrderStore } from '@/stores/order'
 import { mount } from '@vue/test-utils'
 import OrderListView from '@/views/OrderListView.vue'
+import OrderCreateView from '@/views/OrderCreateView.vue'
+import OrderDetailView from '@/views/OrderDetailView.vue'
 import db from '../../../db.json'
 import BaseLoader from '@/components/global/BaseLoader.vue'
 import BaseSelect from '@/components/global/BaseSelect.vue'
@@ -11,7 +13,11 @@ import { createRouter, createWebHistory } from 'vue-router'
 
 const router = createRouter({
   history: createWebHistory(),
-  routes: [{ path: '/', component: OrderListView }],
+  routes: [
+    { path: '/', component: OrderListView, name: 'order-list' },
+    { path: '/order/create', component: OrderCreateView, name: 'create-order' },
+    { path: '/order/:orderId', component: OrderDetailView, name: 'order-detail' },
+  ],
 })
 
 const components = {
@@ -96,7 +102,7 @@ describe('OrderListView Component', () => {
         components,
       },
     })
-    expect(wrapper.find('#status-select').exists()).toBe(true)
-    expect(wrapper.find('#search-input').exists()).toBe(true)
+    expect(wrapper.find('[data-testid="status-select"]').exists()).toBe(true)
+    expect(wrapper.find('[data-testid="search-input"]').exists()).toBe(true)
   })
 })

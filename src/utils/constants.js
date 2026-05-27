@@ -28,6 +28,32 @@ export const TABLE_HEADERS = [
   },
 ]
 
+export const STATUS = {
+  BORRADOR: 'BORRADOR',
+  APROBADA: 'APROBADA',
+  RECHAZADA: 'RECHAZADA',
+  PAGADA: 'PAGADA',
+}
+
+export const ORDER_STATUS_OPTIONS = [
+  {
+    text: 'Borrador',
+    value: STATUS.BORRADOR,
+  },
+  {
+    text: 'Aprobada',
+    value: STATUS.APROBADA,
+  },
+  {
+    text: 'Rechazada',
+    value: STATUS.RECHAZADA,
+  },
+  {
+    text: 'Pagada',
+    value: STATUS.PAGADA,
+  },
+]
+
 export const FILTER_OPTIONS_BY_STATUS = [
   {
     text: 'Todas',
@@ -35,18 +61,18 @@ export const FILTER_OPTIONS_BY_STATUS = [
   },
   {
     text: 'Borrador',
-    value: 'BORRADOR',
+    value: STATUS.BORRADOR,
   },
   {
     text: 'Aprobada',
-    value: 'APROBADA',
+    value: STATUS.APROBADA,
   },
   {
     text: 'Rechazada',
-    value: 'RECHAZADA',
+    value: STATUS.RECHAZADA,
   },
   {
     text: 'Pagada',
-    value: 'PAGADA',
+    value: STATUS.PAGADA,
   },
 ]
