@@ -7,6 +7,8 @@ import App from './App.vue'
 import router from './router'
 import BaseLoader from './components/global/BaseLoader.vue'
 import BaseIcon from './components/global/BaseIcon.vue'
+import BaseInput from './components/global/BaseInput.vue'
+import BaseSelect from './components/global/BaseSelect.vue'
 
 const app = createApp(App)
 
@@ -15,5 +17,7 @@ app.use(router)
 
 app.component('BaseLoader', BaseLoader)
 app.component('BaseIcon', BaseIcon)
+app.component('BaseInput', BaseInput)
+app.component('BaseSelect', BaseSelect)
 
 app.mount('#app')

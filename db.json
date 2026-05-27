@@ -2,107 +2,123 @@
   "orders": [
     {
       "id": 1,
-      "supplierName": "Proveedor 1",
-      "ammount": 1000000,
-      "concept": "Concepto 1",
+      "supplierName": "Comercializadora Andina",
+      "ammount": 1200000,
+      "concept": "Compra de insumos",
       "createdAt": "2026-05-25T00:00:00.000Z",
       "status": "BORRADOR"
     },
     {
       "id": 2,
-      "supplierName": "Proveedor 2",
-      "ammount": 1000000,
-      "concept": "Concepto 2",
-      "createdAt": "2026-05-25T00:00:00.000Z",
+      "supplierName": "Distribuciones El Cafetal",
+      "ammount": 980000,
+      "concept": "Papelería oficina",
+      "createdAt": "2026-05-24T00:00:00.000Z",
       "status": "APROBADA"
     },
     {
       "id": 3,
-      "supplierName": "Proveedor 3",
-      "ammount": 1000000,
-      "concept": "Concepto 3",
-      "createdAt": "2026-05-25T00:00:00.000Z",
+      "supplierName": "Servicios Industriales Gómez",
+      "ammount": 2500000,
+      "concept": "Mantenimiento preventivo",
+      "createdAt": "2026-05-23T00:00:00.000Z",
       "status": "RECHAZADA"
     },
     {
       "id": 4,
-      "supplierName": "Proveedor 4",
-      "ammount": 1000000,
-      "concept": "Concepto 4",
-      "createdAt": "2026-05-25T00:00:00.000Z",
+      "supplierName": "Papeles y Más SAS",
+      "ammount": 450000,
+      "concept": "Útiles de oficina",
+      "createdAt": "2026-05-22T00:00:00.000Z",
       "status": "PAGADA"
     },
     {
       "id": 5,
-      "supplierName": "Proveedor 5",
-      "ammount": 1000000,
-      "concept": "Concepto 5",
-      "createdAt": "2026-05-25T00:00:00.000Z",
+      "supplierName": "Tecnología del Pacífico",
+      "ammount": 5200000,
+      "concept": "Equipos portátiles",
+      "createdAt": "2026-05-21T00:00:00.000Z",
       "status": "BORRADOR"
     },
     {
       "id": 6,
-      "supplierName": "Proveedor 6",
-      "ammount": 1000000,
-      "concept": "Concepto 6",
-      "createdAt": "2026-05-25T00:00:00.000Z",
-      "status": "BORRADOR"
+      "supplierName": "Ferretería Central",
+      "ammount": 780000,
+      "concept": "Herramientas",
+      "createdAt": "2026-05-20T00:00:00.000Z",
+      "status": "APROBADA"
     },
     {
       "id": 7,
-      "supplierName": "Proveedor 7",
-      "ammount": 1000000,
-      "concept": "Concepto 7",
-      "createdAt": "2026-05-25T00:00:00.000Z",
-      "status": "BORRADOR"
+      "supplierName": "Grupo Logístico Herrera",
+      "ammount": 3100000,
+      "concept": "Transporte de mercancía",
+      "createdAt": "2026-05-19T00:00:00.000Z",
+      "status": "PAGADA"
     },
     {
       "id": 8,
-      "supplierName": "Proveedor 8",
-      "ammount": 1000000,
-      "concept": "Concepto 8",
-      "createdAt": "2026-05-25T00:00:00.000Z",
+      "supplierName": "Café Premium del Valle",
+      "ammount": 640000,
+      "concept": "Suministro cafetería",
+      "createdAt": "2026-05-18T00:00:00.000Z",
       "status": "BORRADOR"
     },
     {
       "id": 9,
-      "supplierName": "Proveedor 9",
-      "ammount": 1000000,
-      "concept": "Concepto 9",
-      "createdAt": "2026-05-25T00:00:00.000Z",
-      "status": "BORRADOR"
+      "supplierName": "Importadora San Felipe",
+      "ammount": 4300000,
+      "concept": "Productos importados",
+      "createdAt": "2026-05-17T00:00:00.000Z",
+      "status": "RECHAZADA"
     },
     {
       "id": 10,
-      "supplierName": "Proveedor 10",
-      "ammount": 1000000,
-      "concept": "Concepto 10",
-      "createdAt": "2026-05-25T00:00:00.000Z",
-      "status": "BORRADOR"
+      "supplierName": "Alimentos La Huerta",
+      "ammount": 890000,
+      "concept": "Mercado mensual",
+      "createdAt": "2026-05-16T00:00:00.000Z",
+      "status": "PAGADA"
     },
     {
       "id": 11,
-      "supplierName": "Proveedor 11",
-      "ammount": 1000000,
-      "concept": "Concepto 11",
-      "createdAt": "2026-05-25T00:00:00.000Z",
-      "status": "BORRADOR"
+      "supplierName": "Soluciones Digitales Colombia",
+      "ammount": 7200000,
+      "concept": "Licencias software",
+      "createdAt": "2026-05-15T00:00:00.000Z",
+      "status": "APROBADA"
     },
     {
       "id": 12,
-      "supplierName": "Proveedor 12",
-      "ammount": 1000000,
-      "concept": "Concepto 12",
-      "createdAt": "2026-05-25T00:00:00.000Z",
+      "supplierName": "Constructora Nueva Era",
+      "ammount": 15000000,
+      "concept": "Adecuaciones oficina",
+      "createdAt": "2026-05-14T00:00:00.000Z",
       "status": "BORRADOR"
     },
     {
       "id": 13,
-      "supplierName": "Proveedor 13",
-      "ammount": 1000000,
-      "concept": "Concepto 13",
-      "createdAt": "2026-05-25T00:00:00.000Z",
-      "status": "BORRADOR"
+      "supplierName": "Muebles y Diseños Ortiz",
+      "ammount": 2750000,
+      "concept": "Compra de escritorios",
+      "createdAt": "2026-05-13T00:00:00.000Z",
+      "status": "PAGADA"
+    },
+    {
+      "id": 14,
+      "supplierName": "Transportes Rápidos del Sur",
+      "ammount": 1320000,
+      "concept": "Envíos nacionales",
+      "createdAt": "2026-05-12T00:00:00.000Z",
+      "status": "APROBADA"
+    },
+    {
+      "id": 15,
+      "supplierName": "Laboratorios Médicos Vida",
+      "ammount": 4800000,
+      "concept": "Exámenes ocupacionales",
+      "createdAt": "2026-05-11T00:00:00.000Z",
+      "status": "RECHAZADA"
     }
   ]
 }
