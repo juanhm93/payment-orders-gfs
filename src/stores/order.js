@@ -1,6 +1,6 @@
 import { ref, computed, watch } from 'vue'
 import { defineStore } from 'pinia'
-import { getOrders, getOrderById, updateOrder } from '@/services/orderService'
+import { getOrders, getOrderById } from '@/services/orderService'
 import { debounce } from '@/utils/debounce'
 
 export const useOrderStore = defineStore('order', () => {

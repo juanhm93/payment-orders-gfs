@@ -14,7 +14,7 @@ defineProps({
 </script>
 <template>
   <table class="min-w-full divide-y divide-gray-200">
-    <thead class="bg-gray-100">
+    <thead class="bg-gray-50">
       <tr>
         <th
           scope="col"
@@ -35,7 +35,7 @@ defineProps({
         v-slot="{ navigate }"
       >
         <tr
-          class="transition-colors hover:bg-gray-100 hover:cursor-pointer"
+          class="transition-colors hover:bg-gray-50 hover:cursor-pointer"
           data-testid="order-table-row"
           role="link"
           tabindex="0"

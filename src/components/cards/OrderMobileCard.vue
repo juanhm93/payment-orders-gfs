@@ -9,7 +9,7 @@ defineProps({
 })
 </script>
 <template>
-  <article class="rounded-xl bg-gray-100 p-4 shadow-sm">
+  <article class="overflow-hidden rounded-2xl bg-white p-4 shadow-lg ring-1 ring-gray-200">
     <div class="flex items-start justify-between gap-3">
       <h2 class="text-base font-semibold text-gray-900">
         {{ order.supplierName }}

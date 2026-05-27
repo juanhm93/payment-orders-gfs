@@ -43,7 +43,7 @@ const selectClass = computed(() => {
 
 <template>
   <div class="flex flex-col gap-2" :class="containerClass">
-    <label :for="labelFor">
+    <label v-if="label" :for="labelFor" class="text-sm font-medium text-gray-700">
       {{ label }}
     </label>
     <select

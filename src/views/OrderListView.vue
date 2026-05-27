@@ -19,13 +19,17 @@ const showCardOrdersHaveData = computed(() => {
 })
 
 onMounted(async () => {
-  await orderStore.checkParams()
-  await orderStore.fetchOrders()
+  try {
+    await orderStore.checkParams()
+    await orderStore.fetchOrders()
+  } catch (e) {
+    orderStore.error = e
+  }
 })
 </script>
 
 <template>
-  <section class="order-list-view flex w-full justify-center px-4 py-8">
+  <section class="order-list-view w-full flex justify-center py-6">
     <div class="w-full max-w-7xl">
       <div v-show="!orderStore.error" class="grid grid-cols-1 md:grid-cols-3 gap-4 items-center">
         <BaseSelect
@@ -46,29 +50,25 @@ onMounted(async () => {
           container-class="pb-2"
         />
         <div class="flex justify-end items-end h-full pb-2.5">
-          <a
-            class="text-gray-100 cursor-pointer border-b border-gray-100"
+          <button
+            type="button"
+            class="cursor-pointer border-b border-gray-400 pb-0.5 text-sm text-gray-600 hover:border-gray-600 hover:text-gray-900"
             @click="orderStore.clearFilters"
           >
-            clear filters
-          </a>
+            Limpiar filtros
+          </button>
         </div>
       </div>
 
       <Transition name="state-fade" mode="out-in">
-        <div
-          v-if="orderStore.error"
-          id="error-orders"
-          key="error"
-          class="flex justify-center bg-red-500 text-white p-10 rounded-md"
-        >
+        <BaseAlert v-if="orderStore.error" id="error-orders" key="error" variant="error">
           Error algo salio mal al cargar las órdenes de pago
-        </div>
+        </BaseAlert>
 
         <div v-else-if="orderStore.isLoading" id="loading-orders" key="loading">
           <div class="flex flex-col justify-center items-center gap-4">
             <BaseLoader size="large" />
-            <p class="text-gray-100">Cargando órdenes de pago...</p>
+            <p class="text-gray-600">Cargando órdenes de pago...</p>
           </div>
         </div>
 
@@ -76,7 +76,7 @@ onMounted(async () => {
           v-else-if="showCardEmptyOrders"
           id="empty-orders"
           key="empty"
-          class="rounded-lg border border-gray-200 bg-white px-6 py-8 text-center text-sm text-gray-500 shadow-sm"
+          class="rounded-2xl bg-white px-6 py-8 text-center text-sm text-gray-500 shadow-lg ring-1 ring-gray-200"
         >
           No hay órdenes de pago para mostrar.
         </p>
@@ -85,12 +85,18 @@ onMounted(async () => {
           <!-- Mobile: stacked cards -->
           <div id="table-orders__mobile" class="flex flex-col gap-4 md:hidden mt-4">
             <OrderMobileCard v-for="order in orderStore.orders" :key="order.id" :order="order" />
+            <PageNavigator
+              :page="orderStore.currentPage"
+              :totalPages="orderStore.totalPages"
+              :onPrevious="orderStore.previousPage"
+              :onNext="orderStore.nextPage"
+            />
           </div>
 
           <!-- Desktop: table -->
           <div
             id="table-orders__desktop"
-            class="hidden overflow-x-auto rounded-lg border border-gray-200 shadow-sm md:block"
+            class="hidden overflow-hidden rounded-2xl bg-white shadow-lg ring-1 ring-gray-200 md:block"
           >
             <OrderTable :orders="orderStore.orders" :headers="headers" />
             <PageNavigator

@@ -11,6 +11,7 @@ import BaseInput from './components/global/BaseInput.vue'
 import BaseSelect from './components/global/BaseSelect.vue'
 import BaseModal from './components/global/BaseModal.vue'
 import BaseButton from './components/global/BaseButton.vue'
+import BaseAlert from './components/global/BaseAlert.vue'
 
 const app = createApp(App)
 
@@ -23,5 +24,6 @@ app.component('BaseInput', BaseInput)
 app.component('BaseSelect', BaseSelect)
 app.component('BaseModal', BaseModal)
 app.component('BaseButton', BaseButton)
+app.component('BaseAlert', BaseAlert)
 
 app.mount('#app')

@@ -6,7 +6,8 @@ defineOptions({
 defineProps({
   label: {
     type: String,
-    required: true,
+    required: false,
+    default: '',
   },
   modelValue: {
     type: [String, Number],
@@ -32,7 +33,7 @@ const updateValue = (event) => {
 </script>
 <template>
   <div class="flex flex-col gap-2" :class="containerClass">
-    <label v-if="label">{{ label }}</label>
+    <label v-if="label" class="text-sm font-medium text-gray-700">{{ label }}</label>
     <input
       :value="modelValue"
       @input="updateValue"

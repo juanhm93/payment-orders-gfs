@@ -6,6 +6,8 @@ import OrderListView from '@/views/OrderListView.vue'
 import { createRouter, createWebHistory } from 'vue-router'
 import BaseInput from '@/components/global/BaseInput.vue'
 import BaseLoader from '@/components/global/BaseLoader.vue'
+import BaseButton from '@/components/global/BaseButton.vue'
+import BaseAlert from '@/components/global/BaseAlert.vue'
 
 vi.mock('@/composables/useOrder')
 
@@ -14,6 +16,8 @@ import { useOrder } from '@/composables/useOrder'
 const components = {
   BaseInput,
   BaseLoader,
+  BaseButton,
+  BaseAlert,
 }
 const router = createRouter({
   history: createWebHistory(),

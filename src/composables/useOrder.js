@@ -43,6 +43,7 @@ export const useOrder = () => {
       }
     } catch (e) {
       console.log(e)
+      showMessageError.value = true
     } finally {
       isLoading.value = false
     }
