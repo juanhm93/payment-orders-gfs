@@ -41,3 +41,8 @@ export const createOrder = async (order) => {
   const response = await client.post('/orders', order)
   return response
 }
+
+export const updateOrder = async (id, order) => {
+  const response = await client.patch(`/orders/${id}`, order)
+  return response.data
+}

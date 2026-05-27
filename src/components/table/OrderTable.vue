@@ -27,33 +27,44 @@ defineProps({
       </tr>
     </thead>
     <tbody class="divide-y divide-gray-200 bg-white">
-      <tr
+      <RouterLink
         v-for="order in orders"
+        :to="{ name: 'order-detail', params: { orderId: order.id } }"
         :key="order.id"
-        class="transition-colors hover:bg-gray-100 hover:cursor-pointer"
-        data-testid="order-table-row"
+        custom
+        v-slot="{ navigate }"
       >
-        <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">
-          {{ order.supplierName }}
-        </td>
-        <td class="whitespace-nowrap px-6 py-4 text-sm tabular-nums text-gray-700">
-          {{ formatAmount(order.ammount) }}
-        </td>
-        <td class="max-w-xs truncate px-6 py-4 text-sm text-gray-700" :title="order.concept">
-          {{ order.concept }}
-        </td>
-        <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-700">
-          {{ formatDate(order.createdAt) }}
-        </td>
-        <td class="whitespace-nowrap px-6 py-4">
-          <span
-            class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ring-inset"
-            :class="getStatusPillClass(order.status)"
-          >
-            {{ order.status }}
-          </span>
-        </td>
-      </tr>
+        <tr
+          class="transition-colors hover:bg-gray-100 hover:cursor-pointer"
+          data-testid="order-table-row"
+          role="link"
+          tabindex="0"
+          @click="navigate"
+          @keydown.enter.prevent="navigate"
+          @keydown.space.prevent="navigate"
+        >
+          <td class="whitespace-nowrap px-6 py-4 text-sm font-medium text-gray-900">
+            {{ order.supplierName }}
+          </td>
+          <td class="whitespace-nowrap px-6 py-4 text-sm tabular-nums text-gray-700">
+            {{ formatAmount(order.ammount) }}
+          </td>
+          <td class="max-w-xs truncate px-6 py-4 text-sm text-gray-700" :title="order.concept">
+            {{ order.concept }}
+          </td>
+          <td class="whitespace-nowrap px-6 py-4 text-sm text-gray-700">
+            {{ formatDate(order.createdAt) }}
+          </td>
+          <td class="whitespace-nowrap px-6 py-4">
+            <span
+              class="inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium ring-1 ring-inset"
+              :class="getStatusPillClass(order.status)"
+            >
+              {{ order.status }}
+            </span>
+          </td>
+        </tr>
+      </RouterLink>
     </tbody>
   </table>
 </template>
