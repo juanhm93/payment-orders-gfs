@@ -12,12 +12,12 @@ const router = createRouter({
     {
       path: '/order/create',
       name: 'create-order',
-      component: import('@/views/OrderCreateView.vue'),
+      component: () => import('@/views/OrderCreateView.vue'),
     },
     {
       path: '/order/:id',
       name: 'order-detail',
-      component: import('@/views/OrderDetailView.vue'),
+      component: () => import('@/views/OrderDetailView.vue'),
     },
   ],
 })

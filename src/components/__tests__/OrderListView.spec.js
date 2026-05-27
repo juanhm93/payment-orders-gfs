@@ -64,4 +64,19 @@ describe('OrderListView Component', () => {
     })
     expect(wrapper.find('#error-orders').exists()).toBe(true)
   })
+  it('should fields status select and search input correctly', () => {
+    const pinia = createPinia()
+    setActivePinia(pinia)
+    const orderStore = useOrderStore()
+    orderStore.orders = db.orders
+    orderStore.error = null
+
+    const wrapper = mount(OrderListView, {
+      global: {
+        plugins: [pinia],
+      },
+    })
+    expect(wrapper.find('#status-select').exists()).toBe(true)
+    expect(wrapper.find('#search-input').exists()).toBe(true)
+  })
 })

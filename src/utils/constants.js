@@ -27,3 +27,26 @@ export const TABLE_HEADERS = [
     key: 'status',
   },
 ]
+
+export const FILTER_OPTIONS_BY_STATUS = [
+  {
+    text: 'Todas',
+    value: 'all',
+  },
+  {
+    text: 'Borrador',
+    value: 'BORRADOR',
+  },
+  {
+    text: 'Aprobada',
+    value: 'APROBADA',
+  },
+  {
+    text: 'Rechazada',
+    value: 'RECHAZADA',
+  },
+  {
+    text: 'Pagada',
+    value: 'PAGADA',
+  },
+]

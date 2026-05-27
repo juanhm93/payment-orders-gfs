@@ -1,6 +1,7 @@
-import { ref, computed } from 'vue'
+import { ref, computed, watch } from 'vue'
 import { defineStore } from 'pinia'
 import { getOrders } from '@/services/orderService'
+import { debounce } from '@/utils/debounce'
 
 export const useOrderStore = defineStore('order', () => {
   const orders = ref([])
@@ -11,24 +12,39 @@ export const useOrderStore = defineStore('order', () => {
   const itemsPerPage = ref(10)
   const currentPage = ref(1)
   const totalPages = computed(() => Math.ceil(totalCount.value / itemsPerPage.value))
+  const status = ref('all')
+  const search = ref('')
 
   async function checkParams() {
     const params = new URLSearchParams(window.location.search)
     const page = params.get('_page')
     const perPage = params.get('_per_page')
+    const statusParam = params.get('status')
+    const searchParam = params.get('supplierName_like')
     if (page) {
       currentPage.value = parseInt(page)
     }
     if (perPage) {
       itemsPerPage.value = parseInt(perPage)
     }
+    if (statusParam) {
+      status.value = statusParam
+    }
+    if (searchParam) {
+      search.value = searchParam
+    }
   }
 
   async function fetchOrders() {
     isLoading.value = true
     try {
-      const { data, totalOrders } = await getOrders(currentPage.value, itemsPerPage.value)
-      // console.log(data, totalCount)
+      const { data, totalOrders } = await getOrders(
+        currentPage.value,
+        itemsPerPage.value,
+        status.value,
+        search.value,
+      )
+
       orders.value = data
       totalCount.value = totalOrders
     } catch (e) {
@@ -52,6 +68,18 @@ export const useOrderStore = defineStore('order', () => {
     await fetchOrders()
   }
 
+  const debouncedFetchOrders = debounce(() => {
+    fetchOrders()
+  }, 500)
+
+  watch(status, () => {
+    fetchOrders()
+  })
+
+  watch(search, () => {
+    debouncedFetchOrders()
+  })
+
   return {
     orders,
     isLoading,
@@ -61,6 +89,8 @@ export const useOrderStore = defineStore('order', () => {
     currentPage,
     totalCount,
     itemsPerPage,
+    status,
+    search,
     checkParams,
     fetchOrders,
     previousPage,
