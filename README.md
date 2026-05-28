@@ -103,5 +103,5 @@ Sin embargo, no fue una decision de usar una cosa o la otra tambien se utilizo m
 
 Modo oscuro, en el enfoque principal era lograr el MVP solicitado por lo cual se dejo esto un poco aislado tomando en cuenta que se aclaraba que no era un requerimiento principal.
 
-<img width="400" height="200" alt="ordernes-de-pago-desktop" src="https://github.com/user-attachments/assets/3efb47e8-155b-4c39-a76a-60e218fea601" />
-<img width="300" height="900" alt="ordenes-de-pago-mobile" src="https://github.com/user-attachments/assets/8fd6308e-1d93-4207-9f8a-303f18ffc0f7" />
+<img width="100%" height="auto" alt="ordernes-de-pago-desktop" src="https://github.com/user-attachments/assets/3efb47e8-155b-4c39-a76a-60e218fea601" />
+<img width="35%" height="auto" alt="ordenes-de-pago-mobile" src="https://github.com/user-attachments/assets/8fd6308e-1d93-4207-9f8a-303f18ffc0f7" />
