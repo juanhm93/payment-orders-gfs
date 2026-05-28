@@ -62,18 +62,7 @@ const mobileNavLinkClass =
               </div>
             </div>
           </div>
-          <div class="hidden md:block">
-            <div class="ml-4 flex items-center md:ml-6">
-              <button
-                type="button"
-                class="relative rounded-full p-1 text-gray-400 hover:bg-gray-100 hover:text-gray-600 focus:outline-2 focus:outline-offset-2 focus:outline-indigo-500"
-              >
-                <span class="absolute -inset-1.5"></span>
-                <span class="sr-only">View notifications</span>
-                <BaseIcon icon="notification" />
-              </button>
-            </div>
-          </div>
+
           <div class="-mr-2 flex md:hidden">
             <button
               type="button"

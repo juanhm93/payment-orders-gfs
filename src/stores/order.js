@@ -65,15 +65,15 @@ export const useOrderStore = defineStore('order', () => {
   async function previousPage() {
     if (currentPage.value > 1) {
       currentPage.value--
+      await fetchOrders()
     }
-    await fetchOrders()
   }
 
   async function nextPage() {
     if (currentPage.value < totalPages.value) {
       currentPage.value++
+      await fetchOrders()
     }
-    await fetchOrders()
   }
 
   function clearFilters() {
