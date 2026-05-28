@@ -1,5 +1,5 @@
 <script setup>
-import { onMounted, ref, computed } from 'vue'
+import { onMounted, ref, computed, onUnmounted } from 'vue'
 import { useOrderStore } from '@/stores/order'
 import OrderMobileCard from '@/components/cards/OrderMobileCard.vue'
 import OrderTable from '@/components/table/OrderTable.vue'
@@ -18,13 +18,29 @@ const showCardOrdersHaveData = computed(() => {
   return !orderStore.ordersEmpty && !orderStore.isLoading && !orderStore.error
 })
 
+function handleKeyDown(e) {
+  if (e.key === 'Escape') {
+    orderStore.clearFilters()
+  }
+  if (e.key === 'ArrowLeft') {
+    orderStore.previousPage()
+  }
+  if (e.key === 'ArrowRight') {
+    orderStore.nextPage()
+  }
+}
 onMounted(async () => {
   try {
+    window.addEventListener('keydown', handleKeyDown)
     await orderStore.checkParams()
     await orderStore.fetchOrders()
   } catch (e) {
     orderStore.error = e
   }
+})
+
+onUnmounted(() => {
+  window.removeEventListener('keydown', handleKeyDown)
 })
 </script>
 
@@ -50,6 +66,19 @@ onMounted(async () => {
           container-class="pb-2"
         />
         <div class="flex justify-end items-end h-full pb-2.5">
+          <div class="group relative flex justify-center">
+            <button class="rounded px-2">
+              <BaseIcon icon="info" />
+            </button>
+
+            <!-- Tooltip content -->
+            <span
+              class="absolute bottom-full mb-2 scale-0 rounded bg-gray-800 p-2 text-xs text-white transition-all group-hover:scale-100 min-w-40"
+            >
+              <p>Usa escape para limpiar filtros.</p>
+              <p>Usa flechas izquierda y derecha para navegar entre páginas.</p>
+            </span>
+          </div>
           <button
             type="button"
             class="cursor-pointer border-b border-gray-400 pb-0.5 text-sm text-gray-600 hover:border-gray-600 hover:text-gray-900"
