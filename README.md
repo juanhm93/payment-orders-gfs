@@ -102,3 +102,10 @@ Sin embargo, no fue una decision de usar una cosa o la otra tambien se utilizo m
 ## Pendientes
 
 Modo oscuro, en el enfoque principal era lograr el MVP solicitado por lo cual se dejo esto un poco aislado tomando en cuenta que se aclaraba que no era un requerimiento principal.
+
+
+
+<img width="2400" height="2000" alt="ordernes-de-pago-desktop" src="https://github.com/user-attachments/assets/3efb47e8-155b-4c39-a76a-60e218fea601" />
+<img width="1442" height="6486" alt="ordenes-de-pago-mobile" src="https://github.com/user-attachments/assets/8fd6308e-1d93-4207-9f8a-303f18ffc0f7" />
+
+
